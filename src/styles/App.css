@@ -2,7 +2,10 @@
   height: 100vh;
   background-color: #0d1116;
   overflow: scroll;
-  text-align: center;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container {
@@ -10,11 +13,15 @@
   background-color: #0d1116;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
 }
 
 .header-container {
   padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header {
@@ -62,14 +69,130 @@
 }
 
 .opensea-button {
+  margin-top: 3rem;
   background-color: rgb(32, 129, 226);
 }
 
 .mint-count {
   color: white;
   font-size: 18px;
-  font-weight: bold;
 }
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .loading-text {
+  font-size: 20px;
+  color: white;
+} */
+
+.loading-text {
+  font-size: 20px;
+  color: white;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.loading-text::before, .loading-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #3cefff;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+.loading-text::before {
+  top: 0;
+  transform-origin: center right;
+}
+
+.loading-text:hover::before {
+  transform-origin: center left;
+  transform: scaleX(1);
+}
+
+.loading-text::after {
+  bottom: 0;
+  transform-origin: center left;
+}
+
+.loading-text:hover::after {
+  transform-origin: center right;
+  transform: scaleX(1);
+}
+
+
+.loading-animation {
+  display: flex;
+  width: 8em;
+  height: 8em;
+  border: 3px solid transparent;
+  border-top-color: #3cefff;
+  border-bottom-color: #3cefff;
+  border-radius: 50%;
+  margin-top: 1rem;
+  animation: spin 1.5s linear infinite;
+}
+
+.loading-animation:before {
+  content: '';
+  display: block;
+  margin: auto;
+  width: 3em;
+  height: 3em;
+  border: 3px solid #3cefff;
+  border-radius: 50%;
+  animation: pulse 1s alternate ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.completed-text {
+  color: white;
+  position: relative;
+  z-index: 1;
+  font-size: 55px;
+}
+
+.completed-text::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: -0.25em;
+  right: -0.25em;
+  background-color: #3cefff;
+  transform-origin: bottom center;
+  transform: scaleY(0.1);
+  transition: all 0.1s ease-in-out;
+}
+
+.completed-text:hover::before {
+  transform: scaleY(1);
+  color: black;
+  background-color: #3cefff;
+}
+
 
 .footer-container {
   display: flex;
